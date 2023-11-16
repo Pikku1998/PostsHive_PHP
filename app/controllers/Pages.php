@@ -7,7 +7,7 @@ class Pages extends Controller{
 
     public function index(){
         $data = [
-            'title'=>'Prakash MVC'
+            'title'=>'Posts Hive'
         ];
         $this->view('pages/index', $data);
     }
