@@ -11,7 +11,10 @@
 
     define('URLROOT', 'http://localhost/posts_hive');
     
-    //Sitename params
+    // Sitename params
     define('SITENAME', 'PostsHive');
+
+    // APP version
+    define('APPVERSION', '1.0.0');
 
 ?>

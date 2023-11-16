@@ -7,14 +7,18 @@ class Pages extends Controller{
 
     public function index(){
         $data = [
-            'title'=>'Posts Hive'
+            'title'=>'Posts Hive',
+            'description'=>'A simple social network built on PrakashMVC PHP framework.'
         ];
         $this->view('pages/index', $data);
     }
 
     public function about(){
-        $data = ['title'=>'About'];
-        $this->view('pages/index', $data);
+        $data = [
+            'title'=>'About',
+            'description'=>'App to share posts with other users on internet.'
+        ];
+        $this->view('pages/about', $data);
     }
 
 }
