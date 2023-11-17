@@ -33,7 +33,7 @@ class Database{
     // Prepare the statement
     public function query($sql_query){
         $this->stmt = $this->dbh->prepare($sql_query);
-            
+        return $this->stmt;       
     }
 
     // Execute the statement
