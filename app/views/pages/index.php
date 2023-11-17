@@ -1,6 +1,6 @@
 <?php require_once APPROOT.'/views/inc/header.php' ?>
 
-<div class="card text-center">
+<div class="card text-center mt-3">
     
   <div class="card-body">
     <h2 class="card-title"><?php echo $data['title']?></h2>

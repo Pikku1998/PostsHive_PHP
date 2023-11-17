@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT ?>/pages/about">About</a>
         </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT ?>">Register</a>
         </li>
@@ -19,6 +22,7 @@
           <a class="nav-link" href="<?php echo URLROOT ?>">Login</a>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
