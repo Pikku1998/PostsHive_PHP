@@ -1,8 +1,37 @@
 <?php require_once APPROOT.'/views/inc/header.php' ?>
 
-<div class="card text-center col-md-6 mx-auto mt-3">    
+<div class="card col-md-6 mx-auto mt-3">    
   <div class="card-body">
     <h2>Create an Account</h2>
+    <form action="<?php echo URLROOT.'/users/register'?>" method="post">
+    <div class='mt-4 form-group'>
+        <label for="name">Name: <sup>*</sup></label>
+        <input type="text" name="name" class='form-control'>
+    </div>
+    <div class='form-group'>
+        <label for="email">Email: <sup>*</sup></label>
+        <input type="email" name="email" class='form-control'>
+    </div>
+    <div class='form-group'>
+        <label for="password">Password: <sup>*</sup></label>
+        <input type="password" name="password1" class='form-control'>
+    </div>
+    <div class='form-group'>
+        <label for="name">Confirm Password: <sup>*</sup></label>
+        <input type="password" name="password2" class='form-control'>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        <div class="col">
+            <a href="<?php echo URLROOT.'/users/login'?>" class="btn btn-light">Have an account? Login here</a>
+        </div>
+    </div>
+    
+
+    </form>
   </div>
 </div>
 
