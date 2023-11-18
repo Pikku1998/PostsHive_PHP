@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     // Database params
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
@@ -16,5 +18,7 @@
 
     // APP version
     define('APPVERSION', '1.0.0');
+
+
 
 ?>

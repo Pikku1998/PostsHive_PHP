@@ -1,5 +1,7 @@
 <?php
-session_start();
+// if(isset($_SESSION)){
+//     session_start();
+//   }
 
 class Users extends Controller{
     private $userModel;
@@ -106,9 +108,9 @@ class Users extends Controller{
             // If no errors
             if(empty($data['email_err']) && empty($data['password_err'])){
                 // Validated
-                $loggedUser = $this->userModel->loginUser($data['email'], $data['password']);
-                if($loggedUser){
-                    die('Login success');
+                $authenticatedUser = $this->userModel->loginUser($data['email'], $data['password']);
+                if($authenticatedUser){
+                    $this->createUserSession($authenticatedUser);
                 }else{
                     $data['password_err'] = 'Password incorrect';
                     $this->view('pages/login', $data);
@@ -129,4 +131,20 @@ class Users extends Controller{
         $this->view('pages/login', $data);
         }
     }
+
+    public function createUserSession($authenticatedUser){
+        $_SESSION['user_id'] = $authenticatedUser->id;
+        $_SESSION['user_email'] = $authenticatedUser->email;
+        $_SESSION['user_name'] = $authenticatedUser->name;
+        redirect('pages/index');
+    }
+
+    public function logout(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        session_destroy();
+        redirect('users/login');      
+    }
+
 }

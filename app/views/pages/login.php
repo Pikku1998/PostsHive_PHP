@@ -1,13 +1,17 @@
-<?php require_once APPROOT.'/views/inc/header.php' ?>
+<?php
+// if(isset($_SESSION)){
+//     session_start();
+//   } 
+require_once APPROOT.'/views/inc/header.php' ?>
 
 <div class="card col-md-6 mx-auto mt-3">  
     <?php if(isset($_SESSION['status'])){
         ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <?php echo $_SESSION['status'] ?>
+        <?php echo $_SESSION['status']; unset($_SESSION['status']); ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <?php session_destroy();
+        <?php
     }
     ?>
   <div class="card-body">

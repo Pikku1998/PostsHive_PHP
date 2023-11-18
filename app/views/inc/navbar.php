@@ -1,3 +1,9 @@
+<?php 
+// if(isset($_SESSION)){
+//   session_start();
+// }
+?>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo URLROOT ?>"><?php echo SITENAME ?></a>
@@ -15,12 +21,25 @@
       </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?php echo URLROOT.'/users/register' ?>">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT.'/users/login' ?>">Login</a>
-        </li>
+
+        <?php if(isset($_SESSION['user_id'])): ?>
+          <li class="nav-item">
+            <a class="navbar-brand" href=""><?php echo 'Hi '. $_SESSION['user_name']; ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT.'/users/logout' ?>">Logout</a>
+          </li>
+
+          <?php else: ?>    
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="<?php echo URLROOT.'/users/register' ?>">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'/users/login' ?>">Login</a>
+            </li>  
+        <?php endif; ?>
+
+
       </ul>
 
     </div>
