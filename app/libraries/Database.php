@@ -22,7 +22,7 @@ class Database{
         // Create PDO Instance
         try{
             $this->dbh = new PDO($dsn, $this->dbuser, $this->dbpassword, $options);
-            echo 'Database connected<br>';
+            // echo 'Database connected<br>';
         }
         catch(PDOException $e){
             $this->error = $e->getMessage();
