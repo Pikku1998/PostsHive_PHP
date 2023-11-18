@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Users extends Controller{
     private $userModel;
@@ -51,6 +52,7 @@ class Users extends Controller{
 
                 // Register user
                 if($this->userModel->registerUser($data)){
+                    $_SESSION['status'] = 'User registered successfully. You can now login..';
                     redirect('users/login');
                 }else{
                     die('Something went wrong');
