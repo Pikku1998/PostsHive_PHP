@@ -90,13 +90,15 @@ class Users extends Controller{
             // validate email
             if(empty($data['email'])){
                 $data['email_err'] = 'Please enter your email';
+            }elseif(empty($this->userModel->findUserbyEmail($data['email']))){
+                $data['email_err'] = 'No account found';
             }
 
             // validate password
             if(empty($data['password'])){
                 $data['password_err'] = 'Enter your password';
             }elseif(strlen($data['password'])<6){
-                $data['password_err'] = 'Password must be of atleast 6 characters';
+                $data['password_err'] = 'Password will be of atleast 6 characters';
             }
 
 
@@ -104,7 +106,13 @@ class Users extends Controller{
             // If no errors
             if(empty($data['email_err']) && empty($data['password_err'])){
                 // Validated
-                die('Login Success');
+                $loggedUser = $this->userModel->loginUser($data['email'], $data['password']);
+                if($loggedUser){
+                    die('Login success');
+                }else{
+                    $data['password_err'] = 'Password incorrect';
+                    $this->view('pages/login', $data);
+                }
             }
             // Else load view with errors
             else{
