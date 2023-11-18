@@ -1,7 +1,4 @@
 <?php
-// if(isset($_SESSION)){
-//     session_start();
-//   } 
 require_once APPROOT.'/views/inc/header.php' ?>
 
 <div class="card col-md-6 mx-auto mt-3">  

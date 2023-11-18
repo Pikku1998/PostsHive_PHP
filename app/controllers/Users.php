@@ -1,7 +1,4 @@
 <?php
-// if(isset($_SESSION)){
-//     session_start();
-//   }
 
 class Users extends Controller{
     private $userModel;
@@ -136,7 +133,7 @@ class Users extends Controller{
         $_SESSION['user_id'] = $authenticatedUser->id;
         $_SESSION['user_email'] = $authenticatedUser->email;
         $_SESSION['user_name'] = $authenticatedUser->name;
-        redirect('pages/index');
+        redirect('posts/index');
     }
 
     public function logout(){

@@ -5,6 +5,7 @@ require_once 'config/config.php';
 
 // Load helper files
 require_once 'helpers/urlhelper.php';
+require_once 'helpers/sessionstatus.php';
 
 // Load library files
 // require_once 'libraries/core.php';
