@@ -16,7 +16,9 @@
           <h2>Posts</h2>
         </div>
         <div class="col-md-6 text-end">
-          <a class='btn btn-primary'  href="<?php echo URLROOT.'/posts/addPost'?>"><i class="bi bi-plus-lg"></i>  New Post</a>
+        <a class='btn btn-primary'  href="<?php echo URLROOT.'/posts/viewposts/'.$_SESSION['user_id']?>"><i class="bi bi-journal-check"></i>  My Posts</a>
+
+          <a class='btn btn-primary'  href="<?php echo URLROOT.'/posts/addpost'?>"><i class="bi bi-plus-lg"></i>  New Post</a>
         </div>
       </div>
       <div class='container'>

@@ -27,4 +27,10 @@ class Post{
         return $stmt->execute() ? true : false;
 
     }
+
+    public function getUserPosts($user_id){
+        $stmt = $this->db->query('SELECT * FROM posts WHERE user_id = :user_id');
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+        return $this->db->resultSet();
+    }
 }

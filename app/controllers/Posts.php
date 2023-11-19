@@ -15,7 +15,7 @@ class Posts extends Controller{
         $this->view('posts/index', $data);
     }
 
-    public function addPost(){
+    public function addpost(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // init data
             $data = [
@@ -56,6 +56,12 @@ class Posts extends Controller{
             $this->view('posts/addPost', $data);
         }
         
+    }
+
+    public function viewposts($user_id){
+        $userPosts = $this->postModel->getUserPosts($user_id);
+        $data = ['user_posts'=>$userPosts];
+        $this->view('posts/myposts', $data);
     }
 }
 
