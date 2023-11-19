@@ -59,9 +59,15 @@ class Posts extends Controller{
     }
 
     public function viewposts($user_id){
-        $userPosts = $this->postModel->getUserPosts($user_id);
-        $data = ['user_posts'=>$userPosts];
-        $this->view('posts/myposts', $data);
+        // Check if the user is same as logged user.
+        if($user_id == $_SESSION['user_id']){
+            $userPosts = $this->postModel->getUserPosts($user_id);
+            $data = ['user_posts'=>$userPosts];
+            $this->view('posts/myposts', $data);
+        }else{
+            redirect('posts');
+        }
+        
     }
 
     public function editpost($post_id){
@@ -100,11 +106,18 @@ class Posts extends Controller{
 
         }else{
             $post = $this->postModel->getPostbyId($post_id);
-            $data = [
-                'title' => $post->title,
-                'body' => $post->body
-            ];
-            $this->view('posts/editpost', $data);
+
+            // Check post owner
+            if($post->user_id == $_SESSION['user_id']){
+                $data = [
+                    'title' => $post->title,
+                    'body' => $post->body
+                ];
+                $this->view('posts/editpost', $data);
+            }else{
+                redirect('posts');
+            }
+           
         }
         
     }
