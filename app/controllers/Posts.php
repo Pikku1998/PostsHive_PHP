@@ -121,5 +121,21 @@ class Posts extends Controller{
         }
         
     }
+
+    public function deletepost($post_id){
+        $post = $this->postModel->getPostbyId($post_id);
+        // Check post ownership
+        if($post->user_id == $_SESSION['user_id']){
+                if($this->postModel->deletePost($post_id)){
+                    $_SESSION['post_status'] = 'Your post has been removed';
+                    redirect('posts/viewposts/'.$_SESSION['user_id']);
+                }else{
+                    die('Something went wrong');
+                }
+        }else{
+            redirect('posts');
+        }
+
+    }
 }
 

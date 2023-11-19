@@ -42,6 +42,18 @@ class Post{
 
     }
 
+    public function deletePost($post_id){
+        // Prepare statement
+        $stmt = $this->db->query("DELETE FROM posts WHERE id = :post_id");
+
+        // Bind values
+        $stmt->bindValue(':post_id', $post_id, PDO::PARAM_INT);
+
+        // Execute statement and return status
+        return $stmt->execute() ? true : false;
+
+    }
+
     public function getUserPosts($user_id){
         $stmt = $this->db->query('SELECT * FROM posts WHERE user_id = :user_id ORDER BY created_at DESC');
         $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);

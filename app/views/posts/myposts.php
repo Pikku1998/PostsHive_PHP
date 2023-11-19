@@ -21,7 +21,7 @@
               <footer class="blockquote-footer">Posted at <?php echo date('M j Y g:i A', strtotime($post->created_at)); ?> </footer>
 
           <a class='btn btn-outline-primary'  href="<?php echo URLROOT.'/posts/editpost/'.$post->id ?>"><i class="bi bi-pencil"></i>Edit</a>
-          <a class='btn btn-outline-danger'  href="<?php echo URLROOT?>"><i class="bi bi-trash"></i>Delete</a>
+          <a class='btn btn-outline-danger'  href="<?php echo URLROOT.'/posts/deletepost/'.$post->id ?>"><i class="bi bi-trash"></i>Delete</a>
 
 
             </div>
