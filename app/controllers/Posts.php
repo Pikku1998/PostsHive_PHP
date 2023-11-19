@@ -63,5 +63,50 @@ class Posts extends Controller{
         $data = ['user_posts'=>$userPosts];
         $this->view('posts/myposts', $data);
     }
+
+    public function editpost($post_id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // init data
+            $data = [
+                "post_id"=>$post_id,
+                'user_id'=>$_SESSION['user_id'],
+                'title'=>$_POST['title'],
+                'body'=>$_POST['body'],
+                'title_err'=>'',
+                'body_err'=>''
+            ];
+
+            // Validate data
+            if(empty($data['title'])){
+                $data['title_err'] = 'Enter a title for your post..';
+            }
+            if(empty($data['body'])){
+                $data['body_err'] = 'Please describe a little bit about your post..';
+            }
+
+            // If no errors, Add post to database
+            if(empty($data['title_err']) && empty($data['body_err'])){
+                if($this->postModel->editPost($data)){
+                    $_SESSION['post_status'] = 'Your post has been updated successfully.';
+                    redirect('posts/viewposts/'.$_SESSION['user_id']);
+                }
+                else{
+                    die('Something went wrong');
+                }
+                
+            }else{ // else load view with errors
+                $this->view('posts/editpost', $data);
+            }
+
+        }else{
+            $post = $this->postModel->getPostbyId($post_id);
+            $data = [
+                'title' => $post->title,
+                'body' => $post->body
+            ];
+            $this->view('posts/editpost', $data);
+        }
+        
+    }
 }
 

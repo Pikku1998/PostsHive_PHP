@@ -28,9 +28,29 @@ class Post{
 
     }
 
+    public function editPost($data){
+        // Prepare statement
+        $stmt = $this->db->query("UPDATE posts SET title = :title, body = :body WHERE id = :post_id");
+
+        // Bind values
+        $stmt->bindValue(':post_id', $data['post_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':title', $data['title'], PDO::PARAM_STR);
+        $stmt->bindValue(':body', $data['body'], PDO::PARAM_STR);
+
+        // Execute statement and return status
+        return $stmt->execute() ? true : false;
+
+    }
+
     public function getUserPosts($user_id){
-        $stmt = $this->db->query('SELECT * FROM posts WHERE user_id = :user_id');
+        $stmt = $this->db->query('SELECT * FROM posts WHERE user_id = :user_id ORDER BY created_at DESC');
         $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
         return $this->db->resultSet();
+    }
+
+    public function getPostbyId($post_id){
+        $stmt = $this->db->query('SELECT * FROM posts WHERE id = :post_id');
+        $stmt->bindValue(':post_id', $post_id, PDO::PARAM_INT);
+        return $this->db->result();;
     }
 }
