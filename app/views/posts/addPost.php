@@ -1,5 +1,5 @@
 <?php require_once APPROOT.'/views/inc/header.php' ?>
-<a href="<?php echo URLROOT?>/posts/index" class='btn btn-outline-dark mb-4'>Back</a>
+<a href="<?php echo URLROOT?>/posts/index" class='btn btn-outline-dark mb-4'>Back  <i class="bi bi-backspace"></i></a>
 
 <h3>Create a new Post</h3>
 
