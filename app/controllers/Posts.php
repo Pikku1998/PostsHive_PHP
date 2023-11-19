@@ -5,7 +5,6 @@ class Posts extends Controller{
     public function __construct(){
         if(isLoggedIn()){
             $this->postModel = $this->model('Post');
-            $this->index();           
         }else{
             redirect('users/login');
         }
@@ -14,6 +13,14 @@ class Posts extends Controller{
         $posts = $this->postModel->getPosts();
         $data = ['posts'=>$posts];
         $this->view('posts/index', $data);
+    }
+
+    public function addPost(){
+        $data = [
+            'title'=>'',
+            'body'=>''
+        ];
+        $this->view('posts/addPost', $data);
     }
 }
 

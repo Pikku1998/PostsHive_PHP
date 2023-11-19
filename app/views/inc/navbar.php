@@ -7,7 +7,7 @@
     <div class="container collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?php echo URLROOT ?>">Home</a>
+          <a class="nav-link" aria-current="page" href="<?php echo URLROOT ?>/posts/index">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT ?>/pages/about">About</a>

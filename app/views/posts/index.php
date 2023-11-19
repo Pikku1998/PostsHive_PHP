@@ -4,7 +4,7 @@
         <h2>Posts</h2>
       </div>
       <div class="col-md-6 text-end">
-        <a class='btn btn-primary'  href="">Add new post</a>
+        <a class='btn btn-primary'  href="<?php echo URLROOT.'/posts/addPost'?>">Add new post</a>
       </div>
     </div>
     <div class='container'>
