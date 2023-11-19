@@ -16,11 +16,46 @@ class Posts extends Controller{
     }
 
     public function addPost(){
-        $data = [
-            'title'=>'',
-            'body'=>''
-        ];
-        $this->view('posts/addPost', $data);
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // init data
+            $data = [
+                'user_id'=>$_SESSION['user_id'],
+                'title'=>$_POST['title'],
+                'body'=>$_POST['body'],
+                'title_err'=>'',
+                'body_err'=>''
+            ];
+
+            // Validate data
+            if(empty($data['title'])){
+                $data['title_err'] = 'Enter a title for your post..';
+            }
+            if(empty($data['body'])){
+                $data['body_err'] = 'Please describe a little bit about your post..';
+            }
+
+            // If no errors, Add post to database
+            if(empty($data['title_err']) && empty($data['body_err'])){
+                if($this->postModel->addPost($data)){
+                    $_SESSION['post_status'] = 'Hurray! Your Post is now live.';
+                    redirect('posts/index');
+                }
+                else{
+                    die('Something went wrong');
+                }
+                
+            }else{ // else load view with errors
+                $this->view('posts/addPost', $data);
+            }
+
+        }else{
+            $data = [
+                'title'=>'',
+                'body'=>''
+            ];
+            $this->view('posts/addPost', $data);
+        }
+        
     }
 }
 

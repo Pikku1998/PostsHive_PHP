@@ -13,4 +13,18 @@ class Post{
         ORDER BY posts.created_at DESC');
         return $this->db->resultSet();
     }
+
+    public function addPost($data){
+        // Prepare statement
+        $stmt = $this->db->query("INSERT INTO posts (user_id,title,body) VALUES (:user_id,:title,:body)");
+
+        // Bind values
+        $stmt->bindValue(':user_id', $data['user_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':title', $data['title'], PDO::PARAM_STR);
+        $stmt->bindValue(':body', $data['body'], PDO::PARAM_STR);
+
+        // Execute statement and return status
+        return $stmt->execute() ? true : false;
+
+    }
 }
