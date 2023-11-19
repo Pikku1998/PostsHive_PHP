@@ -2,16 +2,16 @@
     session_start();
 
     // Database params
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASSWORD', 'asdfgh@1');
-    define('DB_NAME', 'posts_hive');
+    define('DB_HOST', 'YOUR_HOST');
+    define('DB_USER', 'YOUR_DB_USER');
+    define('DB_PASSWORD', 'YOUR_DB_PASSWORD');
+    define('DB_NAME', 'YOUR_DB_NAME');
 
 
     // root params
     define('APPROOT', dirname(dirname(__FILE__))) ;
 
-    define('URLROOT', 'http://localhost/posts_hive');
+    define('URLROOT', 'YOUR_URL_ROOT');
     
     // Sitename params
     define('SITENAME', 'PostsHive');
